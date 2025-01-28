@@ -1,3 +1,5 @@
+from mylib.aritmetikosmodulis import dalink, atimk
+
 print(' - - - - - Uzduotis 2 - - - - - - - -')
 
 # Paprastas importavimas
@@ -131,4 +133,75 @@ print(res)#atsakymas - 42
 #kitas variantas
 print(m.sumuok(12, 18))
 print(m.daugink(8, 3))
+
+print(' - - - - - Uzduotis 11 - - - - - - - -')
+
+# 11. Importai iš folderio
+# Užduotis 11:
+# 1. Sukurkite folderį moduliai.
+# 2. Sukurkite šiame folderyje failą aritmetika.py su funkcijomis atimtis(a, b) ir
+# dalyba(a, b).
+# 3. Sukurkite main.py, kuris importuoja aritmetika ir iškviečia šias funkcijas.
+
+import mylib
+res = mylib.matematika.sumuok(3, 9)
+print(res) #atsakymas - 12
+res = mylib.aritmetikosmodulis.atimk(4, 2)
+print(res) #atsakymas - 2
+
+print(' - - - - - Uzduotis 12 - - - - - - - -')
+
+# 12. Visas modulio importavimas iš folderio
+# Užduotis 12:
+# 1. Sukurkite Python programą, kuri importuoja moduliai.aritmetika.
+# 2. Naudokite moduliai.aritmetika.atimtis(20, 5) ir
+# moduliai.aritmetika.dalyba(10, 2).
+# 3. Išspausdinkite rezultatus.
+import mylib.aritmetikosmodulis as art
+res = art.atimk(20, 5)
+print(res) #atsakymas - 15
+res = art.dalink(10, 2)
+print(res) #atsakymas - 5.0
+
+print(' - - - - - Uzduotis 13 - - - - - - - -')
+# 13. Specifinių funkcijų importavimas iš folderio
+# Užduotis 13:
+# 1. Importuokite iš moduliai.aritmetika tik atimtis ir dalyba.
+# 2. Paskaičiuokite 50 - 25 ir 100 / 4.
+# 3. Išspausdinkite rezultatus.
+
+from mylib.aritmetikosmodulis import atimk, dalink
+
+print(atimk(50, 25), dalink(100, 4)) #atsakymas - (25) (25.0)
+
+print(' - - - - - Uzduotis 14 - - - - - - - -')
+
+# 14. Modulio trumpinimas naudojant alias iš folderio
+# Užduotis 14:
+# 1. Importuokite moduliai.aritmetika kaip ar.
+# 2. Naudokite ar.atimtis(30, 10) ir ar.dalyba(50, 5).
+# 3. Išspausdinkite rezultatus.
+
+import mylib.aritmetikosmodulis as ar
+res = ar.atimk(30, 10)
+print(res) #atsakymas - 20
+res = ar.dalink(50, 5)
+print(res) #atsakymas - 10.0
+
+print(' - - - - - Uzduotis 15 - - - - - - - -')
+
+# 15. Importavimas viso folderio
+# Užduotis 15:
+# 1. Sukurkite __init__.py failą folderyje moduliai, kad jis būtų laikomas Python
+# paketu.
+# 2. Importuokite visą folderį import moduliai ir naudokite
+# moduliai.aritmetika.atimtis(15, 5).
+# 3. Išspausdinkite rezultatą.
+
+import mylib
+res = mylib.aritmetikosmodulis.atimk(15, 5)
+print(res) #atsakymas - 10
+
+
+
 
