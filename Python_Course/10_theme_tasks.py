@@ -70,4 +70,24 @@ print(' - - - - - Uzduotis 6 - - - - - - - -')
 from math import *
 print(sin(90)) #atsakymas - 0.8939966636005579
 
+print(' - - - - - Uzduotis 7 - - - - - - - -')
+
+# 7. Importai iš mūsų sukurto modulio
+# Užduotis 7:
+# 1. Sukurkite naują Python failą matematika.py.
+# 2. Šiame faile parašykite funkcijas:
+# a. sudetis(a, b), kuri grąžina dviejų skaičių sumą.
+# b. daugyba(a, b), kuri grąžina dviejų skaičių sandaugą.
+# 3. Sukurkite kitą Python failą main.py, kuris importuoja šias funkcijas ir jas iškviečia.
+
+import matematika
+res = matematika.sumuok(13, 17)
+print(res) #atsakymas - 30
+
+import matematika
+res = matematika.daugink(5, 15)
+print(res) #atsakymas - 75
+
+print(' - - - - - Uzduotis 8 - - - - - - - -')
+
 
