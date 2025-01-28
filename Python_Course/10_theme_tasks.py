@@ -80,7 +80,7 @@ print(' - - - - - Uzduotis 7 - - - - - - - -')
 # b. daugyba(a, b), kuri grąžina dviejų skaičių sandaugą.
 # 3. Sukurkite kitą Python failą main.py, kuris importuoja šias funkcijas ir jas iškviečia.
 
-import matematika as mtk
+from mylib import matematika as mtk, matematika, matematika as m
 
 res = mtk.sumuok(2, 9)
 print(res) #atsakymas - 11
@@ -98,11 +98,9 @@ print(' - - - - - Uzduotis 8 - - - - - - - -')
 # 2. Naudoja matematika.sudetis(10, 20) ir matematika.daugyba(5, 4).
 # 3. Išspausdina rezultatus.
 
-import matematika
 res = matematika.sumuok(13, 17)
 print(res) #atsakymas - 30
 
-import matematika
 res = matematika.daugink(5, 15)
 print(res) #atsakymas - 75
 
@@ -115,7 +113,6 @@ print(' - - - - - Uzduotis 9 - - - - - - - -')
 # 2. Paskaičiuokite sumą ir sandaugą skaičių 8 ir 3.
 # 3. Išspausdinkite rezultatus.
 
-import matematika
 res = matematika.sumuok(8, 3), matematika.daugink(8, 3)
 print(res) #atsakymas - 11, 24
 
@@ -127,9 +124,11 @@ print(' - - - - - Uzduotis 10 - - - - - - - -')
 # 2. Naudokite m.sudetis(12, 18) ir m.daugyba(7, 6).
 # 3. Išspausdinkite rezultatus.
 
-import matematika as m
-
 res = m.sumuok(12, 18)
 print(res) #atsakymas - 30
 res = m.daugink(7, 6)
 print(res)#atsakymas - 42
+#kitas variantas
+print(m.sumuok(12, 18))
+print(m.daugink(8, 3))
+
