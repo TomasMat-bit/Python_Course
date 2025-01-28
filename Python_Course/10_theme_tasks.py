@@ -80,6 +80,24 @@ print(' - - - - - Uzduotis 7 - - - - - - - -')
 # b. daugyba(a, b), kuri grąžina dviejų skaičių sandaugą.
 # 3. Sukurkite kitą Python failą main.py, kuris importuoja šias funkcijas ir jas iškviečia.
 
+import matematika as mtk
+
+res = mtk.sumuok(2, 9)
+print(res) #atsakymas - 11
+
+res = mtk.daugink(11, 7)
+print(res) #atsakymas - 77
+
+
+print(' - - - - - Uzduotis 8 - - - - - - - -')
+
+# 8. Visas modulio importavimas
+# Užduotis 8:
+# 1. Sukurkite Python programą, kuri importuoja matematika modulį (sukurtą
+# ankstesnėje užduotyje).
+# 2. Naudoja matematika.sudetis(10, 20) ir matematika.daugyba(5, 4).
+# 3. Išspausdina rezultatus.
+
 import matematika
 res = matematika.sumuok(13, 17)
 print(res) #atsakymas - 30
@@ -88,6 +106,30 @@ import matematika
 res = matematika.daugink(5, 15)
 print(res) #atsakymas - 75
 
-print(' - - - - - Uzduotis 8 - - - - - - - -')
+print(' - - - - - Uzduotis 9 - - - - - - - -')
 
+# 9. Specifinių funkcijų importavimas
+# Užduotis 9:
+# 1. Naudodami from matematika import sudetis, daugyba, importuokite tik tas
+# funkcijas, kurios reikalingos.
+# 2. Paskaičiuokite sumą ir sandaugą skaičių 8 ir 3.
+# 3. Išspausdinkite rezultatus.
 
+import matematika
+res = matematika.sumuok(8, 3), matematika.daugink(8, 3)
+print(res) #atsakymas - 11, 24
+
+print(' - - - - - Uzduotis 10 - - - - - - - -')
+
+# 10. Modulio trumpinimas naudojant alias
+# Užduotis 10:
+# 1. Importuokite matematika modulį kaip m.
+# 2. Naudokite m.sudetis(12, 18) ir m.daugyba(7, 6).
+# 3. Išspausdinkite rezultatus.
+
+import matematika as m
+
+res = m.sumuok(12, 18)
+print(res) #atsakymas - 30
+res = m.daugink(7, 6)
+print(res)#atsakymas - 42
