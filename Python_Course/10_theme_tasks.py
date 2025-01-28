@@ -27,7 +27,7 @@ from random import randint, choice
 generate_random_number = randint(1, 10)
 print(generate_random_number)
 
-select_random_fruit = choice(['obuolys', 'bananas', 'kriaušė,' 'vyšnia'])
+select_random_fruit = choice(['obuolys', 'bananas', 'kriaušė', 'vyšnia'])
 print(select_random_fruit)
 
 print(' - - - - - Uzduotis 4 - - - - - - - -')
@@ -41,4 +41,8 @@ print(' - - - - - Uzduotis 4 - - - - - - - -')
 # HH:MM:SS
 
 import datetime as dt
+print(f'Dabartinė data ir laikas: {dt.datetime.now()}')
 print(f"Dabartinė data ir laikas: {dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+
+
+print(' - - - - - Uzduotis 5 - - - - - - - -')
