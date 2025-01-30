@@ -80,16 +80,16 @@ users_to_create ={
     'user4': {'name', 'Darius' '123456789'}
 }
 
-created_users = {}
-for key, value in user_to_create.items():
-    create_user(value)
-
-    try:
-        create_user(value)
-    except Exception as e:
-        print(e)
-    finally:
-        print('already created values was saved')
+# created_users = {}
+# for key, value in user_to_create.items():
+#     create_user(value)
+#
+#     try:
+#         create_user(value)
+#     except Exception as e:
+#         print(e)
+#     finally:
+#         print('already created values was saved')
 
 print(' - - - - - - raise – Klaidos sukūrimas - - - -- - - - - - - - ')
 
@@ -101,4 +101,18 @@ def sumuok_int_skaicius(sk1: int, sk2: int) -> int:
 res = sumuok_int_skaicius(4, 5)
 print(res)
 
+print(' - - - - - - programa show salary- - - -- - - - - - - - ')
+
+current_user = 'Admin'
+employee_salaries = {
+    'Jim': 1000,
+    'Tom': 2000,
+}
+
+def show_employee_salary(employee: str) -> int:
+    if current_user not in ['Admin', 'Manager']:
+        raise ValueError('You are not allowed')
+    return employee_salaries[employee]
+
+print(show_employee_salary('Jim'))
 
