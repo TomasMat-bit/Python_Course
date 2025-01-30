@@ -59,25 +59,74 @@ print(dalinti(8,4))
 #         print('Paleiskite programa is naujo ir isvestis padarykit, kad tai butu sveikas skaicius.')
 
 
-print('- - - - - - - - - Užduotis 4: - - - - - - - - - - - - ')
+# print('- - - - - - - - - Užduotis 4: - - - - - - - - - - - - ')
+#
+# # Sukurkite programą, kuri:
+# # 1. Prašo vartotojo įvesti skaičių.
+# # 2. Bandys konvertuoti į int.
+# # 3. Jei klaidos nėra, naudos else, kad atspausdintų "Konversija sėkminga:
+# # <skaičius>".
+# # 4. finally bloke atspausdins "Programa baigė darbą.", nepriklausomai nuo
+# # klaidų.
+#
+# try:
+#     user_input = input('Įveskite skaičių: ')
+#     number = int(user_input)
+# except ValueError:
+#     print('Klaida: įvestas ne skaičius.')
+# else:
+#     print(f'Konversija sėkminga: {number}')
+# finally:
+#     print("Programa baigė darbą.")
+#
+# print('- - - - - - - - - DESTYTOJO KODAs: ')
+# #DESTYTOJO KODAs:
+# while True:
+#     try:
+#         skaicius = int(input('Iveskite skaiciu: '))
+#     except ValueError:
+#         print('Ivesta bloga reiksme. ')
+#     else:
+#         print(f'Konversija sekminga <{skaicius}>')
+#     finally:
+#         print('Programa baige darba.')
 
-# Sukurkite programą, kuri:
-# 1. Prašo vartotojo įvesti skaičių.
-# 2. Bandys konvertuoti į int.
-# 3. Jei klaidos nėra, naudos else, kad atspausdintų "Konversija sėkminga:
-# <skaičius>".
-# 4. finally bloke atspausdins "Programa baigė darbą.", nepriklausomai nuo
-# klaidų.
+print('- - - - - - - - - Užduotis 5: - - - - - - - - - - - - ')
+#
+# 1. Sukurkite funkciją tikrinti_amziu(amzius), kuri:
+# a. Jei amzius < 0, iššaukia ValueError su pranešimu "Amžius negali
+# būti neigiamas!".
+# b. Jei amzius >= 18, grąžina "Vartotojas pilnametis.".
+# c. Jei amzius < 18, grąžina "Vartotojas nepilnametis.".
+# 2. Išbandykite funkciją su reikšmėmis (-5), (15), (21).
+
+def tikrinti_amziu(amzius):
+    if amzius < 0:
+        raise ValueError ('Amžius negali būti neigiamas!')
+    elif amzius >= 18:
+        return 'Vartotojas pilnametis.'
+    else:
+        return 'Vartotojas nepilnametis.'
 
 try:
-    user_input = input('Įveskite skaičių: ')
-    number = int(user_input)
-except ValueError:
-    print('Klaida: įvestas ne skaičius.')
-else:
-    print(f'Konversija sėkminga: {number}')
-finally:
-    print("Programa baigė darbą.")
+    print(tikrinti_amziu(-5))
+except ValueError as e:
+    print(f'Klaida: {e}')
+
+print(tikrinti_amziu(15))
+print(tikrinti_amziu(21))
+
+print('- - - - - - - - - DESTYTOJO KODAS: DOWN')
+
+def tikrinti_amziu(amzius):
+    if amzius < 0:
+        raise ValueError('Amzius negali buti neigiamas!')
+    elif amzius >= 18:
+        print('Vartotojas pilnametis.')
+    else:
+        print('Vartotojas nepilnametis.')
 
 
-
+tikrinti_amziu(15)
+tikrinti_amziu(21)
+tikrinti_amziu(-5)
