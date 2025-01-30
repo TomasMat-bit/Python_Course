@@ -131,8 +131,8 @@ print('--------------- Užduotis 11 ------------------------------------')
 # Sukurkite lambda funkciją pakelti_kvadratu, kuri priima vieną skaičių ir grąžina jo
 # kvadratą.
 
-square = lambda x: x ** 2
-print(square(3)) # atsakymas 9
+pakelti_kvadratu = lambda x: x ** 2
+print(pakelti_kvadratu(3)) # atsakymas 9
 
 print('--------------- Užduotis 12 ------------------------------------')
 
@@ -162,3 +162,5 @@ listas = [5, 10, 15, 20, 25, 30]
 
 dalus_is_desimties = list(filter(lambda x: x % 10 == 0, listas))
 print(dalus_is_desimties) # atsakymas [10, 20, 30]
+
+print('--------------- PABAIGA ------------------------------------')
