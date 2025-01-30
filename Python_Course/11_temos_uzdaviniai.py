@@ -124,4 +124,41 @@ print('--------------- Užduotis 9 ------------------------------------')
 # Pavyzdys:
 atspausdinti_lista(["Obuolys", "Bananai", "Vyšnios"], sep=" | ", end=".\n")
 
+print('--------------- Užduotis 11 ------------------------------------')
 
+# 11. Įvadas į lambda funkcijas
+# Užduotis 11:
+# Sukurkite lambda funkciją pakelti_kvadratu, kuri priima vieną skaičių ir grąžina jo
+# kvadratą.
+
+square = lambda x: x ** 2
+print(square(3)) # atsakymas 9
+
+print('--------------- Užduotis 12 ------------------------------------')
+
+# 12. Lambda funkcijos ir rūšiavimas
+# Užduotis 12:
+# Turite sąrašą darbuotojų su vardais ir atlyginimais:
+# darbuotojai = [("Jonas", 2500), ("Asta", 3200), ("Mantas", 2100)]
+# Naudodami sorted() ir lambda funkciją, surūšiuokite sąrašą pagal atlyginimą nuo
+# mažiausio iki didžiausio.
+
+darbuotojai = [
+    ['Jonas', 2500],
+    ['Asta', 3200],
+    ['Mantas', 2100],
+]
+res = sorted(darbuotojai, key=lambda listas: listas[-1])
+print(res) # atsakymas [['Mantas', 2100], ['Jonas', 2500], ['Asta', 3200]]
+
+print('--------------- Užduotis 13 ------------------------------------')
+
+# 13. Lambda funkcija su filter()
+# Užduotis 14:
+# Turite sąrašą [5, 10, 15, 20, 25, 30]. Naudodami filter() ir lambda funkciją,
+# palikite tik skaičius, kurie dalijasi iš 10.
+
+listas = [5, 10, 15, 20, 25, 30]
+
+dalus_is_desimties = list(filter(lambda x: x % 10 == 0, listas))
+print(dalus_is_desimties) # atsakymas [10, 20, 30]
