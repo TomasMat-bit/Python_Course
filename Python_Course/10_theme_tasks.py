@@ -149,6 +149,14 @@ print(res) #atsakymas - 12
 res = mylib.aritmetikosmodulis.atimk(4, 2)
 print(res) #atsakymas - 2
 
+# kitas pvz pagal mokytoja
+#
+# import moduliai.aritmetika
+#
+# print(moduliai.aritmetika.atimtis(10, 3))
+# print(moduliai.aritmetika.dalyba(20, 4))
+
+
 print(' - - - - - Uzduotis 12 - - - - - - - -')
 
 # 12. Visas modulio importavimas iš folderio
@@ -163,6 +171,13 @@ print(res) #atsakymas - 15
 res = art.dalink(10, 2)
 print(res) #atsakymas - 5.0
 
+# kitas pvz
+
+# print(moduliai.aritmetika.atimtis(20, 5))
+# print(moduliai.aritmetika.dalyba(10, 2))
+
+
+
 print(' - - - - - Uzduotis 13 - - - - - - - -')
 # 13. Specifinių funkcijų importavimas iš folderio
 # Užduotis 13:
@@ -171,6 +186,11 @@ print(' - - - - - Uzduotis 13 - - - - - - - -')
 # 3. Išspausdinkite rezultatus.
 
 from mylib.aritmetikosmodulis import atimk, dalink
+
+# kitas pvz
+# print(atimtis(50, 25))
+# print(dalyba(100, 4))
+
 
 print(atimk(50, 25), dalink(100, 4)) #atsakymas - (25) (25.0)
 
@@ -188,6 +208,11 @@ print(res) #atsakymas - 20
 res = ar.dalink(50, 5)
 print(res) #atsakymas - 10.0
 
+# kitas pvz
+# print(ar.atimtis(30, 10))
+# print(ar.dalyba(50, 5))
+
+
 print(' - - - - - Uzduotis 15 - - - - - - - -')
 
 # 15. Importavimas viso folderio
@@ -202,6 +227,8 @@ import mylib
 res = mylib.aritmetikosmodulis.atimk(15, 5)
 print(res) #atsakymas - 10
 
-
+# Kitas pvz
+# import moduliai
+# print(moduliai.aritmetika.atimtis(15, 5))
 
 
