@@ -24,9 +24,27 @@ print(dalinti(8,4))
 
 print('- - - - - - - - - Užduotis 3: - - - - - - - - - - - - ')
 
+# Užduotis 3:
+# 1. Paprašykite vartotojo įvesti du skaičius.
+# 2. Naudokite try-except, kad suvaldytumėte:
+# a. ValueError, jei vartotojas įveda ne skaičių.
+# b. ZeroDivisionError, jei dalinama iš nulio.
+# 3. Jei klaidos nėra, išveskite rezultatą
 
+input1 = input('irasykite skaiciu: ')
+input2 = input('irasykite skaiciu: ')
 
+try:
+    a = int(input1)
+    b = int(input2)
+    res = a / b
+    print(f'Your result is: {res}')
+except ZeroDivisionError:
+    print('Change 0 to another integer')
+except ValueError:
+    print('Use numbers')
+print('----------------------------------------------')
 
-
+print('- - - - - - - - - Užduotis 4: - - - - - - - - - - - - ')
 
 
