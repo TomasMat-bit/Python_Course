@@ -16,13 +16,19 @@ import datetime
 dt_res = datetime.datetime.today()
 
 metai = dt_res.year
+print(metai)
 menesiai = dt_res.month
+print(menesiai)
 diena = dt_res.day
+print(diena)
 valanda = dt_res.hour
+print(valanda)
 minute = dt_res.minute
+print(minute)
 sekunde = dt_res.second
+print(sekunde)
 
-print(f"Dabar yra {valanda}:{minute}, {diena}-{menesiai}-{metai}")
+print(f'Dabar yra {valanda}:{minute}, {diena}-{menesiai}-{metai}')
 
 print('     ----     --     Užduotis 2   -----     ----       ')
 
