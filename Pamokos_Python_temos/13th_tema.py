@@ -91,3 +91,39 @@ print(months.get(my_datetime.month)) # Vasaris
 print(my_datetime.strftime('%d %B %Y'))  # 15 February 2020
 
 
+print('------ Laiko skirtumo (timedelta) objekto gavimas atliekant datų atimtį ---------')
+
+dabar = datetime.datetime.today()
+mileniumas = datetime.datetime(2000, 1, 1)
+
+skirtumas = dabar - mileniumas
+print(skirtumas)
+print(type(skirtumas))
+
+print('------ Skaičiavimai su timedelta objektais ---------')
+
+# laiko skirtumo objektą mes galim pridėti arba atimti iš datos laiko,
+# gaudami kitą datetime objektą
+# skaičiavimams dažniausiai patogiau sudaryti naują timedelta objektą,
+# iškvietus jo klasę
+
+skirtumas = datetime.timedelta(hours=1000)
+print(skirtumas)
+res = dabar + skirtumas
+print(res)
+
+skirtumas = datetime.timedelta(days=1000, hours=100, minutes=100)
+print(skirtumas)
+res = dabar - skirtumas
+print(res)
+
+print('------ timedelta objekto laukų prieiga ---------')
+
+skirtumas = datetime.timedelta(days=1000, hours=100, minutes=100)
+print(skirtumas)
+print(skirtumas.days)
+print(skirtumas.seconds)
+print(skirtumas.seconds / 60 / 60)
+
+sekundes = skirtumas.total_seconds()
+print(sekundes)

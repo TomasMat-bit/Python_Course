@@ -123,6 +123,7 @@ print('     ----     --     Užduotis 6   -----     ----       ')
 # # Naudodami strftime(), suformatuokite ir išveskite:
 # # "31/12/2022 23:59:59"
 # # "2022 metų gruodžio 31 diena"
+
 # from datetime import datetime
 #
 # data_laikas = datetime(2022, 12, 31, 23, 59, 59)
