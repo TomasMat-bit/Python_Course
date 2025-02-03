@@ -2,6 +2,7 @@
 # datetime klasė ir datos-laiko skaičiavimai
 
 import datetime
+# from http.cookiejar import month
 
 print(type(datetime))  # <class 'module'>
 
@@ -32,5 +33,61 @@ print(dt_res.second)
 print(dt_res.microsecond)
 
 print('------ Norimos datos ir laiko objekto sukūrimas ---------')
+
+# patys sukuriam norimos datos ir laiko objektą
+# pilnai užpildome datos ir laiko laukus
+
+my_datetime = datetime.datetime(2011, 12, 31, 23, 59, 59)
+print(my_datetime)  # 2011-12-31 23:59:59
+
+# today_dt = datetime.datetime.today()
+# print(my_datetime)
+# if my_datetime < today_dt:
+#     print('YES')
+# laiką paduoti nebūtina, užtenka datos
+
+my_datetime = datetime.datetime(2000, 1, 1)
+print(my_datetime)  # 2000-01-01 00:00:00
+# ----------------------------------------------------------------------------
+
+time_from_2000 = datetime.datetime.today() - datetime.datetime(2000, 1, 1)
+print(time_from_2000)
+# ----------------------------------------------------------------------------
+
+
+last_payment_dt = datetime.datetime(2000, 1, 1)
+
+print('------ Datos ir laiko įvedimas naudojant str formatą ---------')
+
+# ĮVESTIS
+# sukursime savo ivesties formatą, naudojant kaukes - formato apibrėžimui
+# ir str - įvesčiai
+# .strptime - metodas naudoja kaukes, duomenų atpažinimui - https://strftime.org/
+
+ivestis = '2020-02-11'
+my_datetime = datetime.datetime.strptime(ivestis, '%Y-%m-%d')
+print(my_datetime)
+
+ivestis = '2020.02.15, 10:11:59'
+my_datetime = datetime.datetime.strptime(ivestis, '%Y.%m.%d, %H:%M:%S')
+print(my_datetime)
+
+print('------ Datos ir laiko išvedimas naudojant strftime formatą ---------')
+months = {
+    1: 'Sausis',
+    2: 'Vasaris'
+}
+
+# IŠVESTIS,
+# taip pačiai sudaroma kaukė, tačiau naudojamas kitas metodas,
+# įvesties nepateikiama, naudojamas jau sukurtas datetime objektas
+# strftime metodas
+
+print(my_datetime)  # 2020-02-15 10:11:59
+print(my_datetime.strftime('%d %m %Y'))  # 15 02 2020
+print(my_datetime.strftime('%d %B %Y'))  # 15 February 2020
+
+print(months.get(my_datetime.month)) # Vasaris
+print(my_datetime.strftime('%d %B %Y'))  # 15 February 2020
 
 
