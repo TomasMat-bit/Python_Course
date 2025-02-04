@@ -1,4 +1,6 @@
 import datetime
+from datetime import timedelta
+
 dt_res = datetime.datetime.today()
 print(dt_res)
 
@@ -172,6 +174,10 @@ skirtumas = datetime.timedelta(days=90)
 print(skirtumas)
 res = dabar + skirtumas
 print(res)
+# #MOKYTOJO:
+# current_date = datetime.today()
+# date_after_90_days = datetime.today + timedelta(days=90)
+
 
 print('     ----     --     Užduotis 9   -----     ----       ')
 
@@ -192,4 +198,31 @@ skirtumas = datetime.timedelta(days=1000, hours=100, minutes=100)
 
 print(f'Skirtumas {(dt_dabar - dt_from).seconds} sekundes nuo 2000-01-01.')
 print(f'Skirtumas {(dt_dabar - dt_from).total_seconds()} bondros sekundes nuo 2000-01-01.')
+
+# from datetime import datetime, timedelta
+#
+# # Užduotis 7
+# date1 = datetime(2023, 1, 1)
+# date2 = datetime(2024, 1, 1)
+# difference = date2 - date1
+#
+# # Užduotis 8
+# current_date = datetime.today()
+# date_after_90_days = current_date + timedelta(days=90)
+#
+# # Užduotis 9
+# date_2000 = datetime(2000, 1, 1)
+# difference_with_today = datetime.today() - date_2000
+#
+# # Rezultatų išvedimas
+# print("Užduotis 7:")
+# print(f"Laiko skirtumas dienomis: {difference.days}\n")
+#
+# print("Užduotis 8:")
+# print(f"Data po 90 dienų bus: {date_after_90_days.strftime('%Y-%m-%d')}\n")
+#
+# print("Užduotis 9:")
+# print(f"Dienų skaičius: {difference_with_today.days}")
+# print(f"Valandų skaičius (naudojant .seconds): {difference_with_today.seconds // 3600}")
+# print(f"Bendras sekundžių skaičius: {int(difference_with_today.total_seconds())}")
 
