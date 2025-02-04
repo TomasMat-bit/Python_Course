@@ -144,3 +144,52 @@ print('     ----     --     Užduotis 6   -----     ----       ')
 
 print('     ----     --     Užduotis 7   -----     ----       ')
 
+# 7. Laiko skirtumo (timedelta) objekto gavimas atliekant datų atimtį
+# Užduotis 7:
+# 1. Sukurkite dvi datas:
+# a. 2023-01-01
+# b. 2024-01-01
+# 2. Apskaičiuokite laiko skirtumą tarp jų naudojant - operatorių.
+# 3. Išveskite rezultatą dienomis.
+
+dt_first = datetime.datetime(2024, 1, 1)
+dt_second = datetime.datetime(2023, 1, 1)
+print(f'Praėjo {(dt_first - dt_second).days} dienų nuo 2023-01-01.')
+
+print('     ----     --     Užduotis 8   -----     ----       ')
+
+# 8. Skaičiavimai su timedelta objektais
+# Užduotis 8:
+# 1. Sukurkite programą, kuri:
+# a. Naudoja dabartinę datą.
+# b. Prideda 90 dienų naudojant timedelta.
+# 2. Išveskite rezultatą:
+# "Data po 90 dienų bus: <data>"
+
+dabar = datetime.datetime.today()
+print(dabar)
+skirtumas = datetime.timedelta(days=90)
+print(skirtumas)
+res = dabar + skirtumas
+print(res)
+
+print('     ----     --     Užduotis 9   -----     ----       ')
+
+# 9. timedelta objekto laukų prieiga
+# Užduotis 9:
+# 1. Apskaičiuokite skirtumą tarp 2000-01-01 ir šiandienos.
+# 2. Išveskite:
+# a. Dienų skaičių
+# b. Valandų skaičių (naudojant .seconds)
+# c. Bendrą sekundžių skaičių (.total_seconds())
+
+#1.a
+dt_from = datetime.datetime(2000, 1, 1)
+dt_dabar = datetime.datetime.today()
+print(f'Skirtumas {(dt_dabar - dt_from).days} dienų nuo 2000-01-01.')
+
+skirtumas = datetime.timedelta(days=1000, hours=100, minutes=100)
+
+print(f'Skirtumas {(dt_dabar - dt_from).seconds} sekundes nuo 2000-01-01.')
+print(f'Skirtumas {(dt_dabar - dt_from).total_seconds()} bondros sekundes nuo 2000-01-01.')
+
