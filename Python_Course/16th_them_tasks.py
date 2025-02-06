@@ -33,10 +33,40 @@ cat.miaukseti()
 dog = Suo('Argas', '9')
 dog.judeti()
 
-print(' - - - - - -  UZDUOTIS 3 - - - - - - - - - ')
+print(' - -  -  -   - -  UZDUOTIS 3 - - - -    - -    - - -  ')
 
+# 3. Komponavimas (Composition)
+# Užduotis:
+# Sukurkite klasę Variklis, kuri turi atributą galia ir metodą startuoti(), kuris+
+# spausdina "Variklis veikia su galia: X arklio galių".+
+# Tada sukurkite klasę Automobilis, kuri turi atributus marke ir modelis, bei naudoja+
+# Variklis kaip savo atributą.+
+# • Pridėkite metodą vaziuoti(), kuris iškviečia startuoti() metodą.
+# Papildoma užduotis:
+# Sukurkite kelis Automobilis objektus su skirtingais varikliais ir priverskite juos važiuoti.
 
+class Variklis:
+    def __init__(self, galia):
+        self.galia = galia
 
+    def startuoti(self):
+        print(f'Variklis veikia su {self.galia} arklio galių!')
 
+class Automobilis:
+    def __init__(self, marke, modelis, variklis):
+        self.marke = marke
+        self.modelis = modelis
+        self.variklis = variklis
 
+    def vaziuoti(self):
+        print(f'Super family car`as {self.marke} {self.modelis} važiuoja:')
+        self.variklis.startuoti()
 
+variklis1 = Variklis(500)
+variklis2 = Variklis(306)
+
+automobilis1 = Automobilis('BMW', 'M5', variklis1)
+automobilis2 = Automobilis('MINI', 'JCW', variklis2)
+
+automobilis1.vaziuoti()
+automobilis2.vaziuoti()
