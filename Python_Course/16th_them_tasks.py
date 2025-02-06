@@ -14,7 +14,7 @@ print(' - - - - - -  UZDUOTIS 2 - - - - - - - - - ')
 class Gyvunas:
     def __init__(self, vardas, amzius):
         self.vardas = vardas
-        self.spalva = amzius
+        self.amzius = amzius
 
     def judeti(self):
         print(f' Gyvūnas {self.vardas} juda!!!')
@@ -32,3 +32,11 @@ cat.miaukseti()
 
 dog = Suo('Argas', '9')
 dog.judeti()
+
+print(' - - - - - -  UZDUOTIS 3 - - - - - - - - - ')
+
+
+
+
+
+
