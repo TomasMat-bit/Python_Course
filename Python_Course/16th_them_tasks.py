@@ -70,3 +70,64 @@ automobilis2 = Automobilis('MINI', 'JCW', variklis2)
 
 automobilis1.vaziuoti()
 automobilis2.vaziuoti()
+
+print(' - -  -  -   - -  UZDUOTIS 4 - - - -    - -    - - -  ')
+
+# 4. Konstruktoriaus Perrašymas
+# Užduotis:
+# Sukurkite tėvinę klasę Asmuo, kuri turi atributus vardas ir amzius. +
+# • Sukurkite konstruktorių, kuris nustato šiuos atributus. +
+# Sukurkite paveldinčią klasę Darbuotojas, kuri paveldi Asmuo ir prideda papildomą +
+# atributą pareigos. +
+# • Perrašykite konstruktorių naudodami super(), kad pridėtumėte pareigos.+
+# Papildoma užduotis:
+# Sukurkite Darbuotojas objektą ir atspausdinkite visą informaciją apie jį.+
+
+class Asmuo:
+    def __init__(self, vardas, amzius):
+        self.vardas = vardas
+        self.amzius = amzius
+
+class Darbuotojas(Asmuo):
+    def __init__(self, vardas, amzius, pareigos):
+        super().__init__(vardas, amzius)
+        self.pareigos = pareigos
+
+
+darbuotojas = Darbuotojas('Antanas',23,'Inspektorius')
+
+print('Vardas: ', darbuotojas.vardas)
+print('Darbuotojo amzius: ', darbuotojas.amzius)
+print('Pareigos: ', darbuotojas.pareigos)
+
+print(' - -  -  -   - -  UZDUOTIS 5 - - - -    - -    - - -  ')
+
+# 5. Kitų Metodų Perrašymas (Overriding)
+# Užduotis:
+# Sukurkite klasę TransportoPriemone su metodu judeti(), kuris spausdina „Transporto
+# priemonė juda“.+
+# Sukurkite paveldinčią klasę Dviratis, kuri perrašo judeti() metodą, kad spausdintų
+# „Dviratis važiuoja pedalais“+.
+# Papildoma užduotis:
+# Sukurkite TransportoPriemone ir Dviratis objektus bei patikrinkite jų judeti()
+# metodų veikimą.
+
+class TransportoPriemone:
+    def judeti(self):
+        print(f'Transporto priemonė juda')
+
+class Dviratis(TransportoPriemone):
+    def judeti(self):
+        print(f'Dviratis važiuoja pedalais')
+
+tp = TransportoPriemone()
+dviratis = Dviratis()
+
+tp.judeti()
+dviratis.judeti()
+
+
+
+
+
+
