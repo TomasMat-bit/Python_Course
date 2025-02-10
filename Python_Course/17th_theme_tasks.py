@@ -244,4 +244,41 @@ try:
 except ValueError as e:
     print(e)
 
+print('-' * 30)
+#destytojo kodas: zemiau:
+class Darbuotojas:
+    def __init__(self, vardas, pavarde, atlyginimas):
+        self.vardas = vardas
+        self.pavarde = pavarde
+        self.__atlyginimas = max(atlyginimas, 500)  # Užtikriname minimalų atlyginimą
+
+    @property
+    def atlyginimas(self):
+        return self.__atlyginimas
+
+    @atlyginimas.setter
+    def atlyginimas(self, naujas_atlyginimas):
+        if naujas_atlyginimas >= 500:
+            self.__atlyginimas = naujas_atlyginimas
+        else:
+            raise ValueError("Atlyginimas negali būti mažesnis nei 500")
+
+    @property
+    def mokesciai(self):
+        return self.__atlyginimas * 0.20
+
+
+darbuotojas = Darbuotojas("Jonas", "Jonaitis", 600)
+print(f"{darbuotojas.vardas} {darbuotojas.pavarde} atlyginimas: {darbuotojas.atlyginimas} EUR")
+print(f"Mokesčiai: {darbuotojas.mokesciai} EUR")
+darbuotojas.atlyginimas = 700
+print(f"Atnaujintas atlyginimas: {darbuotojas.atlyginimas} EUR")
+print(f"Mokesčiai: {darbuotojas.mokesciai} EUR")
+try:
+    darbuotojas.atlyginimas = 400
+except ValueError as e:
+    print(f'Klaida: {e}')
+
+print('-' * 30)
+
 print(' - - - - - - - - - - - -  UZDUOTIS 4  - - - - - - - - - - - ')
