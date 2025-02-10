@@ -182,3 +182,15 @@ print(darbuotojas)
 
 print('-' * 30)
 
+print('- - - - -- - - - @classmethod Dekoratorius - - - - - - - - - - -')
+
+class Darbuotojas:
+    def __init__(self, vardas, pavarde, pareigos):
+        self.vardas = vardas
+        self.pavarde = pavarde
+        self.pareigos = pareigos
+
+    @classmethod
+    def sukurk_is_vienos_eilutes(cls, eilute):
+        vardas, pavarde, pareigos = eilute.split()
+        return cls(vardas, pavarde, pareigos)
