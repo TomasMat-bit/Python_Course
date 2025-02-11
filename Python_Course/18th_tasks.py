@@ -35,12 +35,14 @@ print(prideti_zenkliuka(tekstas))
 print(apversti_teksta(tekstas))
 print(apdoroti_teksta(tekstas))
 print(apdoroti_teksta(tekstas, apversti_teksta))
+print(apdoroti_teksta(tekstas))
 print('-' * 30)
 # Papildoma užduotis:
 # Sukurkite funkciją keli_apdorojimai(tekstas, *funkcijos), kuri pritaiko kelias
 # funkcijas iš eilės tam pačiam tekstui.
 print(keli_apdorojimai(tekstas, apversti_teksta, prideti_zenkliuka))
 print('-' * 30)
+
 print(' - - - - -- - - Uzduotis 2 - - - - - - - - - ')
 
 
