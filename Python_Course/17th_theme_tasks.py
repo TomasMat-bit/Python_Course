@@ -282,3 +282,70 @@ except ValueError as e:
 print('-' * 30)
 
 print(' - - - - - - - - - - - -  UZDUOTIS 4  - - - - - - - - - - - ')
+
+# 4. @staticmethod Dekoratorius
+# Užduotis:
+# Sukurkite klasę Matematika, kuri turi statinius metodus:
+# • sudeti(a, b) – grąžina dviejų skaičių sumą.
+# • atimti(a, b) – grąžina dviejų skaičių skirtumą.
+# • dauginti(a, b) – grąžina sandaugą.
+# • dalinti(a, b) – grąžina dalmenį, bet įsitikinkite, kad nedalinama iš nulio.
+# Papildoma užduotis:
+# Pridėkite statinį metodą ar_lyginis(skaicius), kuris patikrina, ar skaičius yra lyginis.
+
+class Matematika:
+    def __init__(self):
+        self.x = []
+
+    def get_x(self):
+        return self.x
+
+    @staticmethod
+    def sudeti(a, b):
+        return a + b
+
+    @staticmethod
+    def atimti(a, b):
+        return a - b
+
+    @staticmethod
+    def dauginti(a, b):
+        return a * b
+
+    @staticmethod
+    def dalinti(a, b):
+        if b == 0:
+            return
+        return a / b
+
+    @staticmethod
+    def ar_lyginis(skaicius):
+        if skaicius % 2 == 0:
+            return 'Skaicius yra lyginis',
+        else:
+            return 'Skaicius nera  lyginis'
+
+
+x = Matematika.sudeti(10, 5)
+print('sudetis',
+x)
+print('-' * 30)
+
+x = Matematika.atimti(10, 5)
+print('atimtis', x)
+print('-' * 30)
+x = Matematika.dauginti(10, 5)
+print('daugyba', x)
+print('-' * 30)
+x = Matematika.dalinti(10, 5)
+print('dalyba', x)
+print('-' * 30)
+x = Matematika.ar_lyginis(10)
+print(x)
+print('-' * 30)
+
+x = Matematika.ar_lyginis(11)
+print(x)
+print('-' * 30)
+
+
