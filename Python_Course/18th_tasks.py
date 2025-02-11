@@ -116,6 +116,9 @@ print(' - - - - -- - - Uzduotis 3 - - - - - - - - - ')
 
 
 
-
+getattr(g
+        getattr(getattr(
+            float
+        )))
 
 
