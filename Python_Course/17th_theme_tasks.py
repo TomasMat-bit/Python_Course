@@ -349,3 +349,78 @@ print(x)
 print('-' * 30)
 
 
+print(' - - - - - - - - - - - -  UZDUOTIS 5  - - - - - - - - - - - ')
+# 5. @classmethod Dekoratorius
+# Užduotis:
+# Sukurkite klasę Automobilis, kuri turi atributus marke, modelis, metai.
+# • Pridėkite klasės metodą sukurti_is_string(), kuris sukuria objektą iš teksto
+# eilutės, pvz.: "Toyota Corolla 2020".
+# Papildoma užduotis:
+# Pridėkite klasės metodą naujausias_modelis(), kuris grąžina naujausią automobilį iš
+# pateikto automobilių sąrašo.
+
+# class Automobilis:
+#     def __init__(self, marke, modelis, metai):
+#         self.marke = marke
+#         self.modelis = modelis
+#         self.metai = int(metai)
+#
+#     @classmethod
+#     def sukurti_is_string(cls, eilute):
+#         marke, modelis, metai = eilute.split()
+#         return cls(marke, modelis, metai)
+#
+#     def __str__(self):
+#         return f'{self.marke} {self.modelis}, metai {self.metai}'
+#
+#     @classmethod
+#     def naujausias_modelis(cls, automobiliai):
+#         return max(automobiliai, key=lambda x: x.metai)
+#
+#
+# # Testas
+# eilute = 'Toyota Corolla 2020'
+# masina = Automobilis.sukurkti_is_string(eilute)  # Teisingas metodas
+# print(masina)
+# print('-' * 30)
+#
+# # Sukuriame keletą automobilių
+# automobiliai = [
+#     Automobilis.sukurkti_is_string('Toyota Corolla 2020'),
+#     Automobilis.sukurkti_is_string('Honda Civic 2022'),
+#     Automobilis.sukurkti_is_string('BMW 3 Series 2021')
+# ]
+#
+# # Rasti naujausią automobilį
+# naujausias = Automobilis.naujausias_modelis(automobiliai)
+# print('Naujausias automobilis:', naujausias)
+#
+
+
+# Destytojo kodas
+
+class Automobilis:
+    def __init__(self, marke, modelis, metai):
+        self.marke = marke
+        self.modelis = modelis
+        self.metai = int(metai)
+
+    @classmethod
+    def sukurti_is_string(cls, tekstas):
+        marke, modelis, metai = tekstas.split()
+        return cls(marke, modelis, metai)
+
+    @classmethod
+    def naujausias_modelis(cls, automobiliu_sarasas):
+        return max(automobiliu_sarasas, key=lambda auto: auto.metai)
+
+
+# Automobilis klasės metodų testavimas
+auto1 = Automobilis.sukurti_is_string("Toyota Corolla 2020")
+auto2 = Automobilis.sukurti_is_string("Honda Civic 2018")
+auto3 = Automobilis.sukurti_is_string("BMW X5 2022")
+auto4 = Automobilis.sukurti_is_string("Audi A6 2020")
+
+# Spausdiname naujausią modelį
+naujausias = Automobilis.naujausias_modelis([auto1, auto2, auto3])
+print(f"Naujausias automobilis: {naujausias.marke} {naujausias.modelis} {naujausias.metai}")
