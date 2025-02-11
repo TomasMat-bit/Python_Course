@@ -100,18 +100,57 @@ def daugyba(a, b):
 
 @sekimo_dekoratorius
 def dalyba(a, b):
-    if b == 0:
-        return 'klaida, is 0 negalima'
+    if b == 0 or b < 0 :
+        return 'klaida, is 0 ir <0 negalima'
     return a / b
 
 print(daugyba(4, 5))
 print('-' * 30)
 print(dalyba(10, 2))
 print('-' * 30)
-print(dalyba(10, 0))
+print(dalyba(10, -90))
 print('-' * 30)
 
 print(' - - - - -- - - Uzduotis 3 - - - - - - - - - ')
+
+# 3. Iteratoriai
+# Užduotis:
+# Sukurkite klasę SkaiciuSekosIteratorius, kuri:
+# 1. Inicializuojama su pradiniu ir galiniu skaičiumi.
+# 2. Leidžia iteruoti nuo pradinio iki galinio skaičiaus imtinai.
+# 3. Grąžina skaičius kas antrą žingsnį.
+# Papildoma užduotis:
+# Pridėkite metodą atgaline_seka(), kuris grąžina skaičius atvirkštine tvarka.
+
+class SkaiciuSekosIteratorius:
+    def __init__(self, pradzia, pabaiga):
+        self.pradzia = pradzia
+        self.pabaiga = pabaiga
+
+    def __iter__(self):
+        current = self.pradzia
+        while current <= self.pabaiga:
+            yield current
+            current += 2
+
+    def atgaline_seka(self):
+        current = self.pabaiga
+        while current >= self.pradzia:
+            yield current
+            current -= 2
+
+sekos_iteratorius = SkaiciuSekosIteratorius(1, 10)
+
+print("Sekos iteratorius:")
+for skaicius in sekos_iteratorius:
+    print(skaicius)
+
+print("\nAtgalinė seka:")
+for skaicius in sekos_iteratorius.atgaline_seka():
+    print(skaicius)
+
+
+
 
 
 
