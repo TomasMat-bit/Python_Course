@@ -146,3 +146,40 @@ nuskaititi_ir_isvesti_duomenis(min_mokiniu_sk=600)
 # conn.close()
 
 print(' - - - - - - - - - Užduotis: 4 - - - - - - - - - - - ')
+
+# 4. Duomenų Atnaujinimas (UPDATE)
+# Užduotis:
+# 1. Parašykite Python funkciją atnaujinti_mokiniu_skaiciu, kuri:
+# a. Priima mokyklos pavadinimą ir naują mokinių skaičių kaip parametrus.
+# b. Atnaujina nurodytos mokyklos mokinių skaičių duomenų bazėje.
+# 2. Patikrinkite, ar atnaujinimas įvyko sėkmingai, išvesdami visų mokyklų sąrašą po
+# pakeitimo.
+
+def atnaujinti_mokiniu_skaiciu(pavadinimas, naujas_skaicius):
+    with sqlite3.connect('mokykla.db') as conn:
+        c = conn.cursor()
+        c.execute('UPDATE mokykla SET mokiniu_sk = ? WHERE pavadinimas = ?', (naujas_skaicius, pavadinimas))
+        conn.commit()
+
+def nuskaityti_ir_isvesti_duomenis(min_mokiniu_sk=None):
+    with sqlite3.connect('mokykla.db') as conn:
+        c = conn.cursor()
+
+        if min_mokiniu_sk is not None:
+            c.execute('SELECT * FROM mokykla WHERE mokiniu_sk > ?', (min_mokiniu_sk,))
+        else:
+            c.execute('SELECT * FROM mokykla')
+
+        duomenys = c.fetchall()
+
+        for eilute in duomenys:
+            print(f'Mokykla: {eilute[0]}, Adresas: {eilute[1]}, Mokinių skaičius: {eilute[2]}')
+
+print('Prieš atnaujinimą:')
+nuskaityti_ir_isvesti_duomenis()
+
+atnaujinti_mokiniu_skaiciu('Vilniaus progimnazija', 600)
+atnaujinti_mokiniu_skaiciu('Kauno gimnazija', 700)
+
+print('\nPo atnaujinimo:')
+nuskaityti_ir_isvesti_duomenis()
