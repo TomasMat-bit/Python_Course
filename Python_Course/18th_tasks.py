@@ -149,8 +149,55 @@ print("\nAtgalinė seka:")
 for skaicius in sekos_iteratorius.atgaline_seka():
     print(skaicius)
 
+# # destytojo kodas
+# class SkaiciuSekosIteratorius:
+#     def __init__(self, pradinis, galinis):
+#         self.pradinis = pradinis
+#         self.galinis = galinis
+#
+#     def __iter__(self):
+#         return iter(range(self.pradinis, self.galinis + 1, 2))
+#
+#     def atgaline_seka(self):
+#         return [i for i in range(self.galinis, self.pradinis - 1, -2)]
+#
+# # Pavyzdys naudojimui
+# skaiciai = SkaiciuSekosIteratorius(1, 10)
+#
+# print("Sekos iteravimas:")
+# for skaicius in skaiciai:
+#     print(skaicius)
+#
+# print("Atgalinė seka:")
+# print(skaiciai.atgaline_seka())
 
+print(' - - - - -- - - Uzduotis 4 - - - - - - - - - ')
 
+# 4. Generatoriai
+# Užduotis:
+# Sukurkite generatorių fib_generator(n), kuris grąžina pirmus n Fibonacci skaičius.
+# • Fibonacci seka: 0, 1, 1, 2, 3, 5, 8, 13, …
+# Papildoma užduotis:
+# Sukurkite generatorių filtruoti_lyginius(seka), kuris iš pateiktos skaičių sekos
+# grąžina tik lyginius skaičius.
 
+def fib_generator(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
 
+def filtruoti_lyginius(seka):
+    for sk in seka:
+        if sk % 2 == 0:
+            yield sk
 
+n = 10
+fibonacci_seka = fib_generator(n)
+print('Pirmi 10 Fibonacci skaičiai:', list(fibonacci_seka))
+
+print('-' * 30)
+
+fibonacci_seka = fib_generator(n)
+lyginiu_fib = filtruoti_lyginius(fibonacci_seka)
+print('Lyginiai Fibonacci skaičiai: ', list(lyginiu_fib))
