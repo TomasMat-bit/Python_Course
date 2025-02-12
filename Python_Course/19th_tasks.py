@@ -89,9 +89,60 @@ print('\n---------------\n')
 
 print('Mokyklos, kuriose daugiau nei 600 mokinių:')
 nuskaititi_ir_isvesti_duomenis(min_mokiniu_sk=600)
-# DESTYTOJO KODAS:
-
-
-
+# # DESTYTOJO KODAS:
+# import sqlite3
+#
+# # Sukuriame (arba prisijungiame prie esamos) duomenų bazės
+# conn = sqlite3.connect('mokykla.db')
+# cursor = conn.cursor()
+#
+# # Sukuriame lentelę, jei ji dar neegzistuoja
+# cursor.execute('''
+# CREATE TABLE IF NOT EXISTS mokykla (
+#     pavadinimas TEXT,
+#     adresas TEXT,
+#     mokiniu_skaicius INTEGER
+# )
+# ''')
+#
+#
+# # Funkcija duomenų įterpimui
+# def prideti_mokykla(pavadinimas, adresas, mokiniu_skaicius):
+#     cursor.execute('''
+#     INSERT INTO mokykla (pavadinimas, adresas, mokiniu_skaicius)
+#     VALUES (?, ?, ?)
+#     ''', (pavadinimas, adresas, mokiniu_skaicius))
+#     conn.commit()
+#
+#
+# # Įterpiame pateiktus duomenis
+# prideti_mokykla("Vilniaus progimnazija", "Vilniaus g. 10", 500)
+# prideti_mokykla("Kauno gimnazija", "Kauno g. 5", 800)
+#
+#
+# # Funkcija duomenų nuskaitymui su filtru
+# def rodyti_mokyklas(min_mokiniu_skaicius=0):
+#     cursor.execute('''
+#     SELECT *
+#     FROM mokykla
+#     WHERE mokiniu_skaicius > ?
+#     ''', (min_mokiniu_skaicius,))
+#
+#     mokyklos = cursor.fetchall()
+#
+#     for mokykla in mokyklos:
+#         print(f"Mokykla: {mokykla[0]}, Adresas: {mokykla[1]}, Mokinių skaičius: {mokykla[2]}")
+#
+#
+# # Rodome visas mokyklas
+# print("Visos mokyklos:")
+# rodyti_mokyklas()
+#
+# # Rodome mokyklas su daugiau nei 600 mokinių
+# print("\nMokyklos su daugiau nei 600 mokinių:")
+# rodyti_mokyklas(600)
+#
+# # Uždaryti duomenų bazės ryšį
+# conn.close()
 
 print(' - - - - - - - - - Užduotis: 4 - - - - - - - - - - - ')
