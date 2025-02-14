@@ -53,7 +53,7 @@ print(' - - - - 4. Užduoties Etapai - - - - - - - - ')
 # 7. Testuoti programą su keliais įvesties scenarijais.
 print('-' * 30)
 import sqlite3
-# @log_dekoratorius
+
 def sukurti_duomenu_baze():
     conn = sqlite3.connect('universitetas.db')
     cursor = conn.cursor()
@@ -127,17 +127,23 @@ print('-' * 30)
 @log_dekoratorius
 def prideti_mokini(mokinys):
     try:
-        conn = sqlite3.connect('universitetas.db')
-        cursor = conn.cursor()
-        cursor.execute('''
-            INSERT INTO mokiniai (vardas, pavarde, klase, vidurkis) 
-            VALUES (?, ?, ?, ?)
-        ''', (mokinys.vardas, mokinys.pavarde, mokinys.klase, mokinys.vidurkis))
-        conn.commit()
-        conn.close()
+        with sqlite3.connect('universitetas.db') as conn:
+            cursor = conn.cursor()
+            cursor.execute('SELECT COUNT(*) FROM mokiniai WHERE vardas = ? AND pavarde = ?', (mokinys.vardas, mokinys.pavarde))
+            if cursor.fetchone()[0] > 0:
+                print('Toks mokinys jau egzistuoja.')
+            else:
+                cursor.execute('''
+                    INSERT INTO mokiniai (vardas, pavarde, klase, vidurkis) 
+                    VALUES (?, ?, ?, ?)
+                ''', (mokinys.vardas, mokinys.pavarde, mokinys.klase, mokinys.vidurkis))
+                conn.commit()
     except sqlite3.Error as e:
         print(f'Klaida: {e}')
-@log_dekoratorius
+
+
+
+
 def prideti_mokytoja(mokytojas):
     try:
         conn = sqlite3.connect('universitetas.db')
