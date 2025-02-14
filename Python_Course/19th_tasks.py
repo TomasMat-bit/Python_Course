@@ -183,3 +183,66 @@ atnaujinti_mokiniu_skaiciu('Kauno gimnazija', 700)
 
 print('\nPo atnaujinimo:')
 nuskaityti_ir_isvesti_duomenis()
+# # # DESTYTOJO KODAS:
+# import sqlite3
+#
+# def istrink_mokykla(mokyklos_pavadinimas):
+#     conn = sqlite3.connect("mokyklos.db")
+#     cursor = conn.cursor()
+#
+#     cursor.execute("DELETE FROM mokyklos WHERE pavadinimas = ?", (mokyklos_pavadinimas,))
+#
+#     if cursor.rowcount == 0:
+#         print(f"Klada: mokykla {mokyklos_pavadinimas} nerasta.")
+#     else:
+#         conn.commit()
+#         print(f"Mokykla {mokyklos_pavadinimas} ištrinta")
+#
+# def atnaujinti_mokiniu_skaiciu(mokyklos_pavadinimas, naujas_skaicius):
+#     conn = sqlite3.connect("mokyklos.db")
+#     cursor = conn.cursor()
+#
+#     cursor.execute("UPDATE mokyklos SET mokiniu_skaicius = ? WHERE pavadinimas = ?",
+#                    (naujas_skaicius, mokyklos_pavadinimas))
+#
+#     if cursor.rowcount == 0:
+#         print(f"Klaida: Mokykla '{mokyklos_pavadinimas}' nerasta.")
+#     else:
+#         conn.commit()
+#         print(f"Mokyklos '{mokyklos_pavadinimas}' mokinių skaičius atnaujintas į {naujas_skaicius}.")
+#
+#     conn.close()
+#
+# def rodyti_visas_mokyklas():
+#     conn = sqlite3.connect("mokyklos.db")
+#     cursor = conn.cursor()
+#
+#     for row in cursor.execute("SELECT pavadinimas, mokiniu_skaicius FROM mokyklos"):
+#         print(f"Pavadinimas: {row[0]}, Mokinių skaičius: {row[1]}")
+#
+#     conn.close()
+#
+# def sukurti_duomenu_baze():
+#     conn = sqlite3.connect("mokyklos.db")
+#     cursor = conn.cursor()
+#
+#     cursor.execute("""
+#         CREATE TABLE IF NOT EXISTS mokyklos (
+#             pavadinimas TEXT PRIMARY KEY,
+#             mokiniu_skaicius INTEGER
+#         )
+#     """)
+#
+#     cursor.executemany("INSERT OR IGNORE INTO mokyklos VALUES (?, ?)", [
+#         ("Vilniaus gimnazija", 500),
+#         ("Kauno mokykla", 300),
+#         ("Klaipėdos progimnazija", 450)
+#     ])
+#
+#     conn.commit()
+#     conn.close()
+#
+# # sukurti_duomenu_baze()
+# # atnaujinti_mokiniu_skaiciu("Kauno mokykla", 350)
+# istrink_mokykla('Vilniaus gimnazija')
+# rodyti_visas_mokyklas()
