@@ -91,6 +91,7 @@ class Mokytojas(Asmuo):
     def __init__(self, vardas, pavarde, dalykas):
         super().__init__(vardas, pavarde)
         self.dalykas = dalykas
+
 print('-' * 30)
 # 3. Parašyti funkcijas mokinių/mokytojų įterpimui, atnaujinimui, trynimui ir paieškai
 # naudojant SQLite.
@@ -121,6 +122,32 @@ def prideti_mokytoja(mokytojas):
     except sqlite3.Error as e:
         print(f'Klaida: {e}')
 
+def perziureti_visus_mokinius():
+    conn = sqlite3.connect('universitetas.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT id, vardas, pavarde, klase, vidurkis FROM mokiniai')
+    mokiniai = cursor.fetchall()
+    conn.close()
+
+    if mokiniai:
+        for row in mokiniai:
+            print(f'ID: {row[0]} | Vardas: {row[1]} | Pavardė: {row[2]} | Klasė: {row[3]} | Vidurkis: {row[4]}')
+    else:
+        print('Mokinių sąrašas tuščias.')
+
+def ieskoti_mokinio(vardas, pavarde):
+    conn = sqlite3.connect('universitetas.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT id, vardas, pavarde, klase, vidurkis FROM mokiniai WHERE vardas = ? AND pavarde = ?', (vardas, pavarde))
+    mokiniai = cursor.fetchall()
+    conn.close()
+
+    if mokiniai:
+        for row in mokiniai:
+            print(f'ID: {row[0]} | Vardas: {row[1]} | Pavardė: {row[2]} | Klasė: {row[3]} | Vidurkis: {row[4]}')
+    else:
+        print('Mokinys nerastas.')
+
 def atnaujinti_mokinio_klase(mokinys_id, nauja_klase):
     try:
         conn = sqlite3.connect('universitetas.db')
@@ -137,13 +164,84 @@ def istrinti_mokini(mokinys_id):
     try:
         conn = sqlite3.connect('universitetas.db')
         cursor = conn.cursor()
-        cursor.execute("DELETE FROM mokiniai WHERE id = ?", (mokinys_id,))
+        cursor.execute('DELETE FROM mokiniai WHERE id = ?', (mokinys_id,))
         conn.commit()
         conn.close()
     except sqlite3.Error as e:
         print(f'Klaida: {e}')
 
-print('-' * 30)
+def pradinis_mokiniu_sarasas():
+    mokiniai = [
+        Mokinys(vardas='Jonas', pavarde='Jonaitis', klase='8A', vidurkis=8.5),
+        Mokinys(vardas='Petras', pavarde='Petraitis', klase='9B', vidurkis=9.2),
+        Mokinys(vardas='Ieva', pavarde='Ievaitė', klase='10C', vidurkis=7.8)
+    ]
+    for mokinys in mokiniai:
+        prideti_mokini(mokinys)
+
+
+def pasirinkti_veiksma():
+    while True:
+        print('\nMokyklos duomenų valdymo sistema')
+        print('1. Pridėti mokinį')
+        print('2. Pridėti mokytoją')
+        print('3. Peržiūrėti visus mokinius')
+        print('4. Ieškoti mokinio pagal vardą')
+        print('5. Atnaujinti mokinio klasę')
+        print('6. Ištrinti mokinį')
+        print('7. Išeiti')
+
+        pasirinkimas = input('Pasirinkite veiksmą: ')
+
+        if pasirinkimas == '1':
+            vardas = input('Mokinio vardas: ')
+            pavarde = input('Mokinio pavardė: ')
+            klase = input('Mokinio klasė: ')
+            vidurkis = float(input('Mokinio vidurkis: '))
+            mokinys = Mokinys(vardas, pavarde, klase, vidurkis)
+            prideti_mokini(mokinys)
+
+        elif pasirinkimas == '2':
+            vardas = input('Mokytojo vardas: ')
+            pavarde = input('Mokytojo pavardė: ')
+            dalykas = input('Mokytojo dėstomas dalykas: ')
+            mokytojas = Mokytojas(vardas, pavarde, dalykas)
+            prideti_mokytoja(mokytojas)
+
+        elif pasirinkimas == '3':
+            perziureti_visus_mokinius()
+
+        elif pasirinkimas == '4':
+            vardas = input('Mokinio vardas: ')
+            pavarde = input('Mokinio pavardė: ')
+            ieskoti_mokinio(vardas, pavarde)
+
+        elif pasirinkimas == '5':
+            mokinys_id = int(input('Mokinio ID: '))
+            nauja_klase = input('Nauja klasė: ')
+            atnaujinti_mokinio_klase(mokinys_id, nauja_klase)
+
+        elif pasirinkimas == '6':
+            mokinys_id = int(input('Mokinio ID: '))
+            istrinti_mokini(mokinys_id)
+
+        elif pasirinkimas == '7':
+            print('Išeinate...')
+            break
+
+        else:
+            print('Neteisingas pasirinkimas. Bandykite vėl.')
+
+
+# Sukuriame pradinį mokinių sąrašą
+sukurti_duomenu_baze()
+pradinis_mokiniu_sarasas()
+
+# Pradeda konsolės valdymo sistemą
+pasirinkti_veiksma()
+
+
+print('-------------------------------------------------------------------------------------------')
 # 4. Sukurti iteratoriaus klasę, kuri leis peržiūrėti visus mokinius po vieną.
 
 class MokiniuIteratorius:
