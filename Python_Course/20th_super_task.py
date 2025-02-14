@@ -44,8 +44,16 @@ print(' - - - - 3. Realizacija - - - - - - - - ')
 print(' - - - - 4. Užduoties Etapai - - - - - - - - ')
 # Turite atlikti šiuos žingsnius:
 # 1. Sukurti SQLite duomenų bazę su dviem lentelėmis (mokiniai, mokytojai).
+# 2. Sukurti Asmuo, Mokinys, Mokytojas klases su atitinkamais atributais.
+# 3. Parašyti funkcijas mokinių/mokytojų įterpimui, atnaujinimui, trynimui ir paieškai
+# naudojant SQLite.
+# 4. Sukurti iteratoriaus klasę, kuri leis peržiūrėti visus mokinius po vieną.
+# 5. Sukurti dekoratorių, kuris prideda log' ą prieš kiekvieną DB operaciją.
+# 6. Pridėti try-except bloką, kad būtų išvengta programos kritimų dėl blogos įvesties.
+# 7. Testuoti programą su keliais įvesties scenarijais.
 print('-' * 30)
 import sqlite3
+# @log_dekoratorius
 def sukurti_duomenu_baze():
     conn = sqlite3.connect('universitetas.db')
     cursor = conn.cursor()
@@ -74,7 +82,6 @@ def sukurti_duomenu_baze():
 
 sukurti_duomenu_baze()
 print('-' * 30)
-# 2. Sukurti Asmuo, Mokinys, Mokytojas klases su atitinkamais atributais.
 
 class Asmuo:
     def __init__(self, vardas, pavarde):
@@ -92,10 +99,32 @@ class Mokytojas(Asmuo):
         super().__init__(vardas, pavarde)
         self.dalykas = dalykas
 
-print('-' * 30)
-# 3. Parašyti funkcijas mokinių/mokytojų įterpimui, atnaujinimui, trynimui ir paieškai
-# naudojant SQLite.
 
+class MokiniuIteratorius:
+    def __init__(self, mokiniai):
+        self.mokiniai = mokiniai
+        self.index = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.index < len(self.mokiniai):
+            mokinys = self.mokiniai[self.index]
+            self.index += 1
+            return mokinys
+        else:
+            raise StopIteration
+
+def log_dekoratorius(funkcija):
+    def wrapper(*args, **kwargs):
+        print('Vykdoma operacija...')
+        return funkcija(*args, **kwargs)
+    return wrapper
+
+print('-' * 30)
+
+@log_dekoratorius
 def prideti_mokini(mokinys):
     try:
         conn = sqlite3.connect('universitetas.db')
@@ -108,7 +137,7 @@ def prideti_mokini(mokinys):
         conn.close()
     except sqlite3.Error as e:
         print(f'Klaida: {e}')
-
+@log_dekoratorius
 def prideti_mokytoja(mokytojas):
     try:
         conn = sqlite3.connect('universitetas.db')
@@ -232,33 +261,10 @@ def pasirinkti_veiksma():
         else:
             print('Neteisingas pasirinkimas. Bandykite vėl.')
 
-
-# Sukuriame pradinį mokinių sąrašą
 sukurti_duomenu_baze()
 pradinis_mokiniu_sarasas()
 
-# Pradeda konsolės valdymo sistemą
 pasirinkti_veiksma()
-
-
-print('-------------------------------------------------------------------------------------------')
-# 4. Sukurti iteratoriaus klasę, kuri leis peržiūrėti visus mokinius po vieną.
-
-class MokiniuIteratorius:
-    def __init__(self, mokiniai):
-        self.mokiniai = mokiniai
-        self.index = 0
-
-    def __iter__(self):
-        return self
-
-    def __next__(self):
-        if self.index < len(self.mokiniai):
-            mokinys = self.mokiniai[self.index]
-            self.index += 1
-            return mokinys
-        else:
-            raise StopIteration
 
 def gauti_visus_mokinius():
     conn = sqlite3.connect('universitetas.db')
@@ -275,17 +281,5 @@ for mokinys in iteratorius:
     print(f'{mokinys.vardas} {mokinys.pavarde}, Klasė: {mokinys.klase}, Vidurkis: {mokinys.vidurkis}')
 print('-' * 30)
 
-# 5. Sukurti dekoratorių, kuris prideda log' ą prieš kiekvieną DB operaciją.
-# 6. Pridėti try-except bloką, kad būtų išvengta programos kritimų dėl blogos įvesties.
-# 7. Testuoti programą su keliais įvesties scenarijais.
-def log_dekoratorius(funkcija):
-    def wrapper(*args, **kwargs):
-        print('Vykdoma operacija...')
-        return funkcija(*args, **kwargs)
-    return wrapper
 
-@log_dekoratorius
-def prideti_mokini(mokinys):
-    pass
-print('-' * 30)
 
