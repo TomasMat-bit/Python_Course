@@ -1,26 +1,23 @@
-from sqlalchemy import Column, create_engine, Integer, String
-from sqlalchemy.orm import declarative_base, sessionmaker
+from sqlalchemy import Column, create_engine, Integer, String, Float
+from sqlalchemy.orm import declarative_base
 
-# Sukuriame duomenų bazę
-engine = create_engine('sqlite:///mokykla.db')
+engine = create_engine('sqlite:///projektai.db')
 Base = declarative_base()
 
-# Modeliai
-class Mokinys(Base):
-    __tablename__ = 'mokinys'
-    id = Column(Integer, primary_key=True)
-    vardas = Column(String)
-    pavarde = Column(String)
-    klase = Column(Integer)
+class Projektas(Base):
+    __tablename__ = 'projektai'
 
-class Mokytojas(Base):
-    __tablename__ = 'mokytojas'
     id = Column(Integer, primary_key=True)
-    vardas = Column(String)
-    pavarde = Column(String)
-    dalykas = Column(String)
+    pavadinimas = Column(String)
+    kaina = Column(Float)
 
-# Sukuriame lenteles
+    def __str__(self):
+        return f'{self.id} {self.pavadinimas} {self.kaina}'
+
 Base.metadata.create_all(engine)
+
+print('------------------------------------------------------------------------------------------------------')
+
+
 
 

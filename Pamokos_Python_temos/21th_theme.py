@@ -34,24 +34,33 @@ def print_all_records():
 
 print_all_records()
 
+projektai = session.query(Projektas).order_by(Projektas.kaina).all()
+print(projektai)
+for proj in projektai:
+    print(proj)
+
 # session.query(<lenteles klasė>).filter_by(<lauko_pavadinimas>=<paieškos frazė>).all()
 
-filtered_rows = session.query(Projektas).filter_by(kaina=321).all()
-print(f'filtered_rows: {filtered_rows[0]}')
-
-paisekos_pavadinimas = 'Web project'
-filtered_rows = session.query(Projektas).filter_by(pavadinimas=paisekos_pavadinimas, kaina=10000).all()
-print(f'filtered_rows: {filtered_rows[0]}')
 
 
-try:
-    filtered_rows = session.query(Projektas).filter_by(pavadinimas='Project2').one()
-except NoResultFound:
-    print('Nėra rezultatų')
-except MultipleResultsFound:
-    print('Ne vienas rezultatas')
+# filtered_rows = session.query(Projektas).filter_by(kaina=321).all()
+# print(f'filtered_rows: {filtered_rows[0]}')
+#
+# paisekos_pavadinimas = 'Web project'
+# filtered_rows = session.query(Projektas).filter_by(pavadinimas=paisekos_pavadinimas, kaina=10000).all()
+# print(f'filtered_rows: {filtered_rows[0]}')
+#
+#
+# try:
+#     filtered_rows = session.query(Projektas).filter_by(pavadinimas='Project2').one()
+# except NoResultFound:
+#     print('Nėra rezultatų')
+# except MultipleResultsFound:
+#     print('Ne vienas rezultatas')
 
-
+filtered_rows = session.query(Projektas).filter(Projektas.pavadinimas.ilike('%Projektas%'))
+for row in filtered_rows:
+    print('1', row)
 
 # filtered_rows = session.query(Projektas).filter_by(pavadinimas='Web project').first()
 
@@ -66,7 +75,9 @@ except MultipleResultsFound:
 # row_id = 2
 # row_object = session.get(Projektas, row_id)
 # print('PAGAUTAS OBJEKTAS: ', row_object)
-#
+
+print(' - - -- - - - Duomenų delete - - - - - - - - -  - - -  - - - - - ')
+
 # session.delete(row_object)
 # session.commit()
 #
