@@ -159,7 +159,7 @@ def trinti_mokini_pagal_id(mokinys_id):
     else:
         print('Mokinys su tokiu ID nerastas.')
 
-trinti_mokini_pagal_id(1)  # Pavyzdys, kur 1 yra mokinio ID
+trinti_mokini_pagal_id(1)
 spausdinti_mokinius()
 print('-'* 30)
 
@@ -172,21 +172,21 @@ def trinti_mokytoja_pagal_id(mokytojas_id):
     else:
         print('Mokytojas su tokiu ID nerastas.')
 
-trinti_mokytoja_pagal_id(1)  # Pavyzdys, kur 1 yra mokytojo ID
+trinti_mokytoja_pagal_id(1)
 spausdinti_mokytojus()
 print('-'* 30)
 
-def trinti_mokinius_kurie_baige_mokykla():
-    mokiniai_12_klase = session.query(Mokinys).filter_by(klase=12).all()
-    for mokinys in mokiniai_12_klase:
-        session.delete(mokinys)
-    session.commit()
-    print('Visi 12 klasės mokiniai buvo ištrinti.')
-
-trinti_mokinius_kurie_baige_mokykla()
-print('Mokiniai:')
-spausdinti_mokinius()
-print('-'* 30)
+# def trinti_mokinius_kurie_baige_mokykla():
+#     mokiniai_12_klase = session.query(Mokinys).filter_by(klase=12).all()
+#     for mokinys in mokiniai_12_klase:
+#         session.delete(mokinys)
+#     session.commit()
+#     print('Visi 12 klasės mokiniai buvo ištrinti.')
+#
+# trinti_mokinius_kurie_baige_mokykla()
+# print('Mokiniai:')
+# spausdinti_mokinius()
+# print('-'* 30)
 
 print('-'* 30, 'DESTYTOJO KODAS: ','-'* 30)
 
@@ -286,7 +286,7 @@ print('-' * 30)
 #     for teacher in teachers:
 #         print(teacher)
 
-print(' - - - - 6. Užduotis  - - - - - - - ')
+print(' - - -  - - - - - - - 6. Užduotis  - - -  - - - - - - - - - - ')
 
 # 7. Rikiavimas ir skaičiavimai
 # Užduotis:
@@ -304,8 +304,6 @@ def spausdinti_mokinius_pagal_klase():
 
 spausdinti_mokinius_pagal_klase()
 print('-' * 30)
-
-
 
 def suskaiciuoti_mokinius_kiekvienoje_klaseje():
     klasiu_skaicius = session.query(Mokinys.klase, func.count(Mokinys.id)).group_by(Mokinys.klase).all()
