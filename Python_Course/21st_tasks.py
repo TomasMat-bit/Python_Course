@@ -50,7 +50,7 @@ from sqlalchemy.orm import declarative_base, sessionmaker
 
 
 # Sukuriame duomenų bazę
-engine = create_engine('sqlite:///mokykla.db')
+engine = create_engine('s(qlite:///mokykla.db')
 Base = declarative_base()
 
 # Modeliai
@@ -107,7 +107,9 @@ for vardas, pavarde, klase in mokiniai:
 # Pridedame mokytojus
 mokytojai = [
     Mokytojas(vardas="Rasa", pavarde="Rasaitė", dalykas="Matematika"),
-    Mokytojas(vardas="Tomas", pavarde="Tomaitis", dalykas="Fizika")
+    Mokytojas(vardas="Tomas", pavarde="Tomaitis", dalykas="Fizika"),
+    Mokytojas(vardas="Tadas", pavarde="Labutis", dalykas="Muzika"),
+    Mokytojas(vardas="Petras", pavarde="Petraitis", dalykas="Technologijos")
 ]
 
 session.add_all(mokytojai)

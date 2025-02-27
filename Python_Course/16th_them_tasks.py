@@ -126,6 +126,7 @@ dviratis = Dviratis()
 tp.judeti()
 dviratis.judeti()
 
+print(' - -  -  -   - -  UZDUOTIS 5 - - - -    - -    - - -  ')
 
 
 
