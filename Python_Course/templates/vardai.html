@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <title>Vartotojai</title>
+</head>
+<body>
+    <h4>Vardai, gauti iš Python faile aprašyto sąrašo</h4>
+
+    <p>Vardai po vieną:</p>
+    <ul>
+        {% for elem in names_for_template %}
+            <li><a href="{{ url_for('vartotojas', name=elem) }}">{{ elem }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <p><a href="{{ url_for('home') }}"><button>Grįžti į pagrindinį puslapį</button></a></p>
+</body>
+</html>

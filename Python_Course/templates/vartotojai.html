@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ name }} - Vartotojai</title>
+</head>
+<body>
+    <h1>Jūs pasirinkote vartotoją: {{ name }}</h1>
+
+    <p><a href="{{ url_for('names_list') }}"><button>Grįžti į vartotojų sąrašą</button></a></p>
+    <p><a href="{{ url_for('home') }}"><button>Grįžti į pagrindinį puslapį</button></a></p>
+</body>
+</html>

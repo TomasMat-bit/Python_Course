@@ -47,53 +47,89 @@
 # # if __name__ == '__main__':
 # app.run()
 
-print(' - - - - - - - - - UZDUOTIS 2 - - - - - - - - -  - - -- - - -  ')
+# print(' - - - - - - - - - UZDUOTIS 2 - - - - - - - - -  - - -- - - -  ')
+#
+# # 2. HTML atsakymas ir nuorodos tarp puslapių
+# # Užduotis:
+# # 1. Sukurkite maršrutą /pagrindinis, kuris grąžina HTML su:
+# # a. Antrašte „Mano Flask puslapis“
+# # b. Paragrafu „Tai yra pagrindinis puslapis“
+# # c. Nuoroda į /apie puslapį.
+# # Papildoma užduotis:
+# # Pridėkite nuorodas į /vartotojas/<vardas> ir /skaicius/<int:nr> maršrutus.
+# from flask import Flask
+#
+# app = Flask(__name__)
+#
+# @app.route('/')
+# def home():
+#     return '<h1>Mano Flask puslapis</h1>' \
+#            '<p>Tai yra pagrindinis puslapis</p>' \
+#            '<p>Cia mano pirmas Flask projektas</p>' \
+#            '<p><a href="/apie">Apie puslapį</a></p>' \
+#            "<p><a href='/vartotojas/Argoras'>Pereiti į Vartotojo poskyrį</a></p>" \
+#            "<p><a href='/skaicius/10'>Pereiti į Skaičių poskyrį</a></p>"
+#
+# @app.route('/apie')
+# def apie():
+#     return '<h1>Apie Puslapį</h1>' \
+#            '<p>Nuo ko susikūrė šis puslapis ir kas čia yra.</p>' \
+#            '<p><a href="/">Grįžti į pradinį puslapį</a></p>'
+#
+# @app.route('/vartotojas/<vardas>')
+# def vartotojas(vardas):
+#     return f"<h1>Vartotojo Duomenys</h1><h2>Laba diena, {vardas}!</h2>" \
+#            '<p><a href="/">Grįžti į pradinį puslapį</a></p>'
+#
+# @app.route('/skaicius/<int:nr>')
+# def skaicius(nr):
+#     return f"<h1>Skaicių skyrius</h1><h2>Jūs įvedėte skaičių: {nr}</h2>" \
+#            '<p><a href="/">Grįžti į pradinį puslapį</a></p>'
+#
+# @app.route('/pagrindinis')
+# def pagrindinis():
+#     return '<h1>Mano Flask puslapis</h1>' \
+#            '<p>Tai yra pagrindinis puslapis</p>' \
+#            '<p><a href="/apie">Apie puslapį</a></p>' \
+#            "<p><a href='/vartotojas/Argoras'>Pereiti į Vartotojo poskyrį</a></p>" \
+#            "<p><a href='/skaicius/10'>Pereiti į Skaičių poskyrį</a></p>"
+#
+# if __name__ == '__main__':
+#     app.run(debug=True)
 
-# 2. HTML atsakymas ir nuorodos tarp puslapių
+print(' - - - - - - - - - UZDUOTIS 3 - - - - - - - - -  - - -- - - -  ')
+
+# 3. Flask šablonai ir duomenų perdavimas į HTML
 # Užduotis:
-# 1. Sukurkite maršrutą /pagrindinis, kuris grąžina HTML su:
-# a. Antrašte „Mano Flask puslapis“
-# b. Paragrafu „Tai yra pagrindinis puslapis“
-# c. Nuoroda į /apie puslapį.
+# Sukurkite templates/index.html šabloną, kuriame:
+# Rodomas pasveikinimo pranešimas.
+# Yra nuoroda į /vartotojai puslapį.
+# Sukurkite maršrutą /vartotojai, kuris perduoda vardų sąrašą į šabloną
+# vartotojai.html ir jame visi vardai išvedami per {% for ... %} ciklą.
 # Papildoma užduotis:
-# Pridėkite nuorodas į /vartotojas/<vardas> ir /skaicius/<int:nr> maršrutus.
-from flask import Flask
+# Pakeiskite HTML taip, kad kiekvienas vardas būtų pateiktas kaip nuoroda į
+# /vartotojas/<vardas>.
+
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return '<h1>Mano Flask puslapis</h1>' \
-           '<p>Tai yra pagrindinis puslapis</p>' \
-           '<p>Cia mano pirmas Flask projektas</p>' \
-           '<p><a href="/apie">Apie puslapį</a></p>' \
-           "<p><a href='/vartotojas/Argoras'>Pereiti į Vartotojo poskyrį</a></p>" \
-           "<p><a href='/skaicius/10'>Pereiti į Skaičių poskyrį</a></p>"
+    return render_template('index.html')
 
-@app.route('/apie')
-def apie():
-    return '<h1>Apie Puslapį</h1>' \
-           '<p>Nuo ko susikūrė šis puslapis ir kas čia yra.</p>' \
-           '<p><a href="/">Grįžti į pradinį puslapį</a></p>'
 
-@app.route('/vartotojas/<vardas>')
-def vartotojas(vardas):
-    return f"<h1>Vartotojo Duomenys</h1><h2>Laba diena, {vardas}!</h2>" \
-           '<p><a href="/">Grįžti į pradinį puslapį</a></p>'
+@app.route('/vartotojai')
+def names_list():
+    names = ['Adomas', 'Antanas', 'Valdas', 'Jonas']
+    return render_template('vardai.html', names_for_template=names)
 
-@app.route('/skaicius/<int:nr>')
-def skaicius(nr):
-    return f"<h1>Skaicių skyrius</h1><h2>Jūs įvedėte skaičių: {nr}</h2>" \
-           '<p><a href="/">Grįžti į pradinį puslapį</a></p>'
 
-@app.route('/pagrindinis')
-def pagrindinis():
-    return '<h1>Mano Flask puslapis</h1>' \
-           '<p>Tai yra pagrindinis puslapis</p>' \
-           '<p><a href="/apie">Apie puslapį</a></p>' \
-           "<p><a href='/vartotojas/Argoras'>Pereiti į Vartotojo poskyrį</a></p>" \
-           "<p><a href='/skaicius/10'>Pereiti į Skaičių poskyrį</a></p>"
+@app.route('/vartotojai/<name>')
+def vartotojas(name):
+    return render_template('vartotojai.html', name=name)
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 
