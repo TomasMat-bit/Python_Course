@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paieška</title>
+</head>
+<body>
+    <h1>Paieška</h1>
+    <form method="POST" action="/paieska">
+        <label for="paieskoslaukelis">Paieškos frazė:</label>
+        <input type="text" name="paieskoslaukelis" id="paieskoslaukelis">
+        <label for="produkto_pavadinimas">Produkto pavadinimas:</label>
+        <input type="text" name="produkto_pavadinimas" id="produkto_pavadinimas">
+        <button type="submit">Ieškoti</button>
+    </form>
+
+    {% if search_text %}
+        <p>Paieškos frazė: {{ search_text }}</p>
+        <p>Produkto pavadinimas: {{ search_product }}</p>
+    {% endif %}
+</body>
+</html>
