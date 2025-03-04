@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registracija</title>
+</head>
+<body>
+    <h1>Registracija</h1>
+
+    <form method="POST" action="/registracija">
+        <label for="username">Vartotojo vardas:</label>
+        <input type="text" name="username" id="username" required>
+        <br>
+
+        <label for="password">Slaptažodis:</label>
+        <input type="password" name="password" id="password" required>
+        <br>
+
+        <label for="confirm_password">Pakartotas slaptažodis:</label>
+        <input type="password" name="confirm_password" id="confirm_password" required>
+        <br>
+
+        <button type="submit">Registruotis</button>
+    </form>
+
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+    {% if success %}
+        <p style="color:green;">{{ success }}</p>
+    {% endif %}
+</body>
+</html>
