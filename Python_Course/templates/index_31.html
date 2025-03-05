@@ -11,7 +11,7 @@
     </form>
     <ul>
         {% for mokinys in mokiniai %}
-            <li>{{ mokinys.id }} {{ mokinys.vardas }} {{ mokinys.pavarde }} - {{ mokinys.klase }} klasė</li>
+            <li>{{ mokinys.id }} {{ mokinys.vardas }} {{ mokinys.pavarde }} - {{ mokinys.klase }} klasė, sekanti klasė: {{ mokinys.next_class }}</li>
         {% endfor %}
     </ul>
 </body>
