@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paieška</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Paieška darbovietėms</h1>
+    <form method="POST">
+        <label for="pavadinimas">Darbovietės pavadinimas:</label>
+        <input type="text" id="pavadinimas" name="pavadinimas"><br><br>
+
+        <label for="miestas">Miestas:</label>
+        <input type="text" id="miestas" name="miestas"><br><br>
+
+        <input type="submit" value="Ieškoti">
+    </form>
+
+    <a href="{{ url_for('index') }}">Grįžti į darboviečių sąrašą</a>
+</body>
+</html>

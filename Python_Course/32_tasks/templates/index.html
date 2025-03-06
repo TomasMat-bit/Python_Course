@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darboviečių sąrašas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Darboviečių sąrašas</h1>
+
+    <!-- Paieškos forma -->
+    <form method="POST" action="{{ url_for('paieska') }}">
+        <input type="text" name="pavadinimas" placeholder="Įveskite pavadinimą" value="{{ request.form['pavadinimas'] if request.form.get('pavadinimas') else '' }}">
+        <input type="submit" value="Ieškoti darboviečių">
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Pavadinimas</th>
+                <th>Miestas</th>
+                <th>Darbuotojų skaičius</th>
+                <th>Veiksmai</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for darboviete in darbovietes %}
+            <tr>
+                <td>{{ darboviete.pavadinimas }}</td>
+                <td>{{ darboviete.miestas }}</td>
+                <td>{{ darboviete.darbuotoju_skaicius }}</td>
+                <td>
+                    <button onclick="window.location.href='{{ url_for('redaguoti_darboviete', id=darboviete.id) }}'">Redaguoti</button> |
+                    <button onclick="window.location.href='{{ url_for('trinti_darboviete', id=darboviete.id) }}'">Ištrinti</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <form action="{{ url_for('prideti_darboviete') }}" method="get">
+        <button type="submit">Pridėti naują darbovietę</button>
+    </form>
+</body>
+</html>
