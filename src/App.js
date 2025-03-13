@@ -8,7 +8,7 @@ function Registracija() {
     if (vardas) {
       alert(`Įvestas vardas: ${vardas}`);
     } else {
-      alert("Prašome įvesti vardą!");
+      alert("Prašome įvesti varda!");
     }
   };
 
