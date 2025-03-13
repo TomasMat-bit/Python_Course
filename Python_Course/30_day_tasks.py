@@ -15,7 +15,6 @@ print(' - - - - - - - - - - - -  4. GET ir POST formos su Flask - -- - - - - - -
 #
 # app = Flask(__name__)
 #
-# valid_users = ['hello', 'labas', 'ate']
 # @app.route('/')
 # def home():
 #     search_text = request.args.get('paieskoslaukelis')
@@ -84,13 +83,16 @@ def home():
 @app.route('/registracija', methods=['GET', 'POST'])
 def registracija():
     if request.method == 'POST':
-        # Retrieve form data
+
         username = request.form.get('username')
+        email = request.form.get('email')
         password = request.form.get('password')
         confirm_password = request.form.get('confirm_password')
 
         if not username or not password or not confirm_password:
             return render_template('registracija.html', error="Visi laukai turi būti užpildyti!")
+
+
 
         if password != confirm_password:
             return render_template('registracija.html', error="Slaptažodis ir pakartotas slaptažodis nesutampa!")
