@@ -1,8 +1,15 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import React, { useState } from "react";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+function Skaiciuokle() {
+  const [skaicius, setSkaicius] = useState(0);
+
+  return (
+    <div>
+      <h1>{skaicius}</h1>
+      <button onClick={() => setSkaicius(skaicius + 1)}>Padidinti</button>
+      <button onClick={() => setSkaicius(skaicius - 1)}>Sumazinti</button>
+    </div>
+  );
+}
+
+export default Skaiciuokle;
