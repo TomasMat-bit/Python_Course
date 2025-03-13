@@ -5,7 +5,11 @@ function Registracija() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Ivestas vardas: ${vardas}`);
+    if (vardas) {
+      alert(`Įvestas vardas: ${vardas}`);
+    } else {
+      alert("Prašome įvesti vardą!");
+    }
   };
 
   return (
