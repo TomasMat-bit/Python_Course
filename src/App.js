@@ -1,28 +1,30 @@
 import React, { useState } from "react";
-import Skaitiklis from "./Skaitiklis";
 
-function Sveikinimas() {
-  const [tekstas, setTekstas] = useState("Sveiki");
+function Registracija() {
+  const [vardas, setVardas] = useState("");
 
-  const keistiTeksta = () => {
-    setTekstas("Labas, React!");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Ivestas vardas: ${vardas}`);
   };
 
   return (
-    <div>
-      <h1>{tekstas}</h1>
-      <button onClick={keistiTeksta}>Keisti</button>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <label>
+        Vardas:
+        <input
+          type="text"
+          value={vardas}
+          onChange={(e) => setVardas(e.target.value)}
+        />
+      </label>
+      <button type="submit">Pateikti</button>
+    </form>
   );
 }
 
 function App() {
-  return (
-    <div>
-      <Sveikinimas />
-      <Skaitiklis />
-    </div>
-  );
+  return <Registracija />;
 }
 
 export default App;
